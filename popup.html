@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TOTP Authenticator</title>
+    <link rel="stylesheet" href="popup.css" />
+</head>
+
+<body>
+    <main class="card">
+
+        <!-- ── View: List ── -->
+        <div id="viewList">
+            <div class="topbar">
+                <div>
+                    <h1 id="appTitle"></h1>
+                    <p class="subtitle" id="subtitle"></p>
+                </div>
+                <div class="topbar-actions">
+                    <div class="lang-switch" id="langSwitch" role="group" aria-label="Language">
+                        <button type="button" class="lang-btn" data-lang="zh">中</button>
+                        <button type="button" class="lang-btn" data-lang="en">En</button>
+                    </div>
+                    <button id="addAccountBtn" type="button" class="add-btn" aria-label="Add account">+</button>
+                </div>
+            </div>
+
+            <section id="accountList" class="account-list"></section>
+
+            <p class="hint" id="hint"></p>
+            <p class="github-line">
+                <span class="github-author">by suolk</span>
+                <a class="github-link" href="https://github.com/suolk/Tiny-Auth" target="_blank"
+                    rel="noopener noreferrer">View on GitHub</a>
+            </p>
+        </div>
+
+        <!-- ── View: Editor ── -->
+        <div id="viewEditor" class="hidden">
+            <div class="topbar">
+                <button id="backBtn" type="button" class="back-btn" aria-label="Back">&lt;</button>
+                <h2 id="editorTitle"></h2>
+            </div>
+
+            <div class="editor-fields">
+                <label for="editName" id="labelUsername"></label>
+                <input id="editName" type="text" autocomplete="off" spellcheck="false" />
+
+                <label for="editSecret" id="labelKey"></label>
+                <div class="input-wrap">
+                    <input id="editSecret" type="password" autocomplete="off" spellcheck="false" />
+                    <button id="toggleSecretBtn" type="button" class="eye-btn" aria-label="Show secret">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </button>
+                </div>
+
+                <label for="editSiteName" id="labelSiteName"></label>
+                <input id="editSiteName" type="text" autocomplete="off" spellcheck="false" />
+
+                <label for="editSiteUrl" id="labelSiteUrl"></label>
+                <input id="editSiteUrl" type="url" autocomplete="off" spellcheck="false" />
+            </div>
+
+            <div class="actions">
+                <button id="cancelBtn" type="button" class="secondary"></button>
+                <button id="scanQrBtn" type="button" class="secondary"></button>
+                <button id="captureQrBtn" type="button" class="secondary"></button>
+                <input id="qrFileInput" type="file" accept="image/*" class="hidden" aria-hidden="true" />
+            </div>
+            <button id="scanHelpBtn" type="button" class="help-link"></button>
+
+            <div id="toastEditor" class="toast hidden" aria-live="polite"></div>
+        </div>
+
+        <!-- ── View: Help ── -->
+        <div id="viewHelp" class="hidden">
+            <div class="topbar">
+                <button id="helpBackBtn" type="button" class="back-btn" aria-label="Back">&lt;</button>
+                <h2 id="helpTitle"></h2>
+            </div>
+            <div class="help-content">
+                <p class="help-intro" id="helpIntro"></p>
+                <ol class="help-list" id="helpList"></ol>
+            </div>
+        </div>
+
+        <div id="confirmBar" class="confirm-bar hidden" role="alert">
+            <span id="confirmText"></span>
+            <div class="confirm-actions">
+                <button id="confirmYesBtn" type="button" class="danger"></button>
+                <button id="confirmNoBtn" type="button" class="secondary"></button>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="zxing.js"></script>
+    <script src="popup.js" type="module"></script>
+</body>
+
+</html>
