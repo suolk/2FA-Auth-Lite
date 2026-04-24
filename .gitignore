@@ -4,3 +4,18 @@ package.json
 *.pem
 *.crx
 .vscode
+
+# Local IDE/system files
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local env/log files
+.env
+.env.*
+*.log
+
+# Extension packaging artifacts
+package/
+dist/
+*.zip
