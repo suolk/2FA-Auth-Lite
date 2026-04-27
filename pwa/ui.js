@@ -6,7 +6,7 @@ import {
     viewList, viewEditor, viewHelp,
     accountListEl, langSwitch,
     editorTitle, editNameInput, editSiteNameInput, editSiteUrlInput, editSecretInput,
-    cancelBtn, scanQrBtn, captureQrBtn, scanHelpBtn,
+    cancelBtn, saveBtn, scanQrBtn, scanHelpBtn,
     toggleSecretBtn, confirmBar, confirmText, confirmYesBtn, confirmNoBtn,
     toastEditorEl,
 } from "./state.js";
@@ -26,12 +26,12 @@ export function applyLang() {
     document.getElementById("labelKey").textContent = t("labelKey");
     document.getElementById("labelSiteName").textContent = t("labelSiteName");
     document.getElementById("labelSiteUrl").textContent = t("labelSiteUrl");
+    document.getElementById("saveBtn").textContent = t("btnSave");
     editNameInput.placeholder = t("placeholderUsername");
     editSecretInput.placeholder = t("placeholderKey");
     editSiteNameInput.placeholder = t("placeholderSiteName");
     editSiteUrlInput.placeholder = t("placeholderSiteUrl");
     scanQrBtn.textContent = t("btnUploadQr");
-    captureQrBtn.textContent = t("btnScanQr");
     cancelBtn.textContent = t("btnCancel");
     scanHelpBtn.textContent = t("btnScanHelp");
     confirmYesBtn.textContent = t("btnConfirmYes");
@@ -213,7 +213,16 @@ export function showEditor(accountId) {
     setIsShowingSecret(false);
     editSecretInput.type = "password";
     toggleSecretBtn.classList.remove("eye-btn--open");
-    toggleSecretBtn.setAttribute("aria-label", "Show secret");
+    toggleSecretBtn.setAttribute("aria-label", "显示密钥");
+
+    // 重置图标显示状态
+    const closedIcon = toggleSecretBtn.querySelector('.eye-icon-closed');
+    const openIcon = toggleSecretBtn.querySelector('.eye-icon-open');
+    if (closedIcon && openIcon) {
+        closedIcon.style.display = 'block';
+        openIcon.style.display = 'none';
+    }
+
     closeDeleteConfirm();
     setEditorStatus("");
     showView("editor");

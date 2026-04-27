@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Generate TOTP codes for two-factor authentication." />
+    <meta name="theme-color" content="#b2472f" />
+    <title>Tiny Auth</title>
+
+    <script>
+        // ✅ 自动计算 basePath（关键修复）
+        (function () {
+            const segments = window.location.pathname.split('/').filter(Boolean);
+            const basePath = segments.length > 0 ? '/' + segments[0] + '/' : '/';
+
+            window.APP_BASE_PATH = basePath;
+            console.log('Resolved basePath:', basePath);
+
+            function add(tag) {
+                document.head.appendChild(tag);
+            }
+
+            // CSS - 添加错误处理
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = basePath + 'app.css?v=20260428c';
+            link.onerror = function () {
+                console.error('Failed to load CSS from:', link.href);
+            };
+            link.onload = function () {
+                console.log('CSS loaded successfully from:', link.href);
+            };
+            add(link);
+
+            // manifest - 添加错误处理
+            const manifest = document.createElement('link');
+            manifest.rel = 'manifest';
+            manifest.href = basePath + 'manifest.webmanifest?v=20260428c';
+            manifest.onerror = function () {
+                console.error('Failed to load manifest from:', manifest.href);
+            };
+            add(manifest);
+
+            // icons
+            const icons = [
+                ['icon', 'image/png', '96x96', 'icons/icon96x96.png'],
+                ['icon', 'image/png', '128x128', 'icons/icon128x128.png'],
+                ['apple-touch-icon', '', '', 'icons/ios/180.png']
+            ];
+
+            icons.forEach(([rel, type, size, href]) => {
+                const el = document.createElement('link');
+                el.rel = rel;
+                if (type) el.type = type;
+                if (size) el.sizes = size;
+                el.href = basePath + href;
+                add(el);
+            });
+
+            // ✅ 动态 importmap（关键修复点）
+            const importMap = {
+                imports: {
+                    "./totp.js": basePath + "totp.js?v=20260428c",
+                    "./storage.js": basePath + "storage.js?v=20260428c",
+                    "./i18n.js": basePath + "i18n.js?v=20260428c",
+                    "./state.js": basePath + "state.js?v=20260428c",
+                    "./ui.js": basePath + "ui.js?v=20260428c",
+                    "./qr.js": basePath + "qr.js?v=20260428c",
+                    "./sites.js": basePath + "sites.js?v=20260428c"
+                }
+            };
+
+            const script = document.createElement('script');
+            script.type = 'importmap';
+            script.textContent = JSON.stringify(importMap);
+            document.head.appendChild(script);
+            console.log('Import map created:', importMap);
+
+            // jsqr - add error handling
+            const jsqr = document.createElement('script');
+            jsqr.src = basePath + 'jsqr.js?v=20260428c';
+            jsqr.onerror = function () {
+                console.error('Failed to load jsqr.js from:', jsqr.src);
+            };
+            jsqr.onload = function () {
+                console.log('jsqr.js loaded successfully');
+            };
+            document.head.appendChild(jsqr);
+
+            // app.js - wait for DOM to be ready
+            document.addEventListener('DOMContentLoaded', () => {
+                const app = document.createElement('script');
+                app.type = 'module';
+                app.src = basePath + 'app.js?v=20260428c';
+                app.onerror = function () {
+                    console.error('Failed to load app.js from:', app.src);
+                };
+                app.onload = function () {
+                    console.log('app.js loaded successfully');
+                };
+                document.body.appendChild(app);
+            });
+        })();
+    </script>
+</head>
+
+<body>
+    <main class="card">
+
+        <!-- List -->
+        <div id="viewList">
+            <div class="topbar">
+                <div>
+                    <h1 id="appTitle"></h1>
+                    <p class="subtitle" id="subtitle"></p>
+                </div>
+                <div class="topbar-actions">
+                    <div class="lang-switch" id="langSwitch">
+                        <button type="button" class="lang-btn" data-lang="zh">中</button>
+                        <button type="button" class="lang-btn" data-lang="en">En</button>
+                    </div>
+                    <button id="addAccountBtn" type="button" class="add-btn">+</button>
+                </div>
+            </div>
+
+            <section id="accountList" class="account-list"></section>
+
+            <p class="hint" id="hint"></p>
+
+            <p class="github-line">
+                <span class="github-author">by suolk</span>
+                <a class="github-link" href="https://github.com/suolk/Tiny-Auth" target="_blank">View on GitHub</a>
+            </p>
+        </div>
+
+        <!-- Editor -->
+        <div id="viewEditor" class="hidden">
+            <div class="topbar">
+                <button id="backBtn" class="back-btn">&lt;</button>
+                <h2 id="editorTitle"></h2>
+            </div>
+
+            <div id="toastEditor" class="toast hidden"></div>
+
+            <form onsubmit="return false;">
+                <div class="editor-fields">
+                    <label id="labelUsername">Username</label>
+                    <input id="editName" type="text" autocomplete="username" />
+
+                    <label id="labelKey">Secret</label>
+                    <div style="position: relative;">
+                        <input id="editSecret" type="password" autocomplete="off" />
+                        <button id="toggleSecretBtn" type="button" class="eye-btn" aria-label="显示密钥">
+                            <svg class="eye-icon-closed" viewBox="0 0 24 24">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            <svg class="eye-icon-open" viewBox="0 0 24 24" style="display: none;">
+                                <path
+                                    d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
+                                </path>
+                                <line x1="1" y1="1" x2="23" y2="23"></line>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <label id="labelSiteName">Site Name</label>
+                    <input id="editSiteName" type="text" autocomplete="off" />
+
+                    <label id="labelSiteUrl">Site URL</label>
+                    <input id="editSiteUrl" type="url" autocomplete="url" />
+                </div>
+
+                <div class="actions">
+                    <button id="cancelBtn" type="button" class="secondary"></button>
+                    <button id="saveBtn" type="button" class="primary"></button>
+                    <button id="scanQrBtn" type="button" class="secondary"></button>
+                    <input id="qrFileInput" type="file" accept="image/*" class="hidden" />
+                </div>
+
+                <div class="scan-help-line">
+                    <a id="scanHelpBtn" class="help-link" href="javascript:void(0);"></a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Help -->
+        <div id="viewHelp" class="hidden">
+            <div class="topbar">
+                <button id="helpBackBtn" class="back-btn">&lt;</button>
+                <h2 id="helpTitle"></h2>
+            </div>
+            <div class="help-content">
+                <p id="helpIntro"></p>
+                <ol id="helpList"></ol>
+            </div>
+        </div>
+
+        <div id="confirmBar" class="confirm-bar hidden">
+            <span id="confirmText"></span>
+            <div class="confirm-actions">
+                <button id="confirmYesBtn" class="danger"></button>
+                <button id="confirmNoBtn" class="secondary"></button>
+            </div>
+        </div>
+
+    </main>
+</body>
+
+</html>
