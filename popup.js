@@ -119,7 +119,6 @@ async function goBack() {
 
 async function deleteAccount(accountId) {
     setAccounts(accounts.filter((item) => item.id !== accountId));
-    if (!accounts.length) setAccounts([createAccount("", "", "Account 1", "")]);
     await persistAccounts(accounts);
     await refreshCodes();
 }
@@ -146,7 +145,7 @@ async function copyCode(accountId) {
 
 accountListEl.addEventListener("click", (event) => {
     const target = event.target;
-    if (!(target instanceof HTMLElement)) return;
+    if (!(target instanceof Element)) return;
     const btn = target.closest("[data-action]");
     if (!btn || !(btn instanceof HTMLElement)) return;
     const { action, id: accountId } = btn.dataset;

@@ -44,9 +44,5 @@ export async function loadAccounts() {
         accounts = [createAccount("GitHub", normalizeBase32(stored[LEGACY_SECRET_KEY]))];
     }
 
-    if (!accounts.length) {
-        accounts = [createAccount("Account 1", "")];
-    }
-
     return accounts;
 }
