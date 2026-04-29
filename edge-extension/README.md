@@ -1,4 +1,4 @@
-# Tiny Auth - Browser Extension
+# 2FA-Auth-Lite - Browser Extension
 
 [English](#english) | [中文](./README.zh.md)
 
@@ -10,8 +10,8 @@ Browser extension version for Chrome, Edge, and other Chromium-based browsers.
 
 ### From GitHub Releases
 
-1. Visit the [Releases page](https://github.com/suolk/Tiny-Auth/releases/tag/v1.0.0)
-2. Download `Tiny Auth.zip`
+1. Visit the [Releases page](https://github.com/suolk/2FA-Auth-Lite/releases/tag/v1.0.0)
+2. Download `2FA-Auth-Lite.zip`
 3. Open your browser's extension page:
    - Chrome: `chrome://extensions`
    - Edge: `edge://extensions`

@@ -1,4 +1,4 @@
-# Tiny Auth - 浏览器扩展
+# 2FA-Auth-Lite - 浏览器扩展
 
 [English](./README.md)
 
@@ -8,8 +8,8 @@
 
 ### 从 GitHub Releases 安装
 
-1. 访问 [Releases 页面](https://github.com/suolk/Tiny-Auth/releases/tag/v1.0.0)
-2. 下载 `Tiny Auth.zip`
+1. 访问 [Releases 页面](https://github.com/suolk/2FA-Auth-Lite/releases/tag/v1.0.0)
+2. 下载 `2FA-Auth-Lite.zip`
 3. 打开浏览器扩展页面：
    - Chrome: `chrome://extensions`
    - Edge: `edge://extensions`

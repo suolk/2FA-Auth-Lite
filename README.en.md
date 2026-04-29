@@ -1,4 +1,4 @@
-# Tiny Auth
+# 2FA-Auth-Lite
 
 [English](./README.en.md) | [中文](./README.md)
 
@@ -8,7 +8,7 @@ A lightweight TOTP (Time-based One-Time Password) authenticator for two-factor a
 
 ### Overview
 
-Tiny Auth generates 6-digit verification codes compatible with GitHub, Google, Microsoft, and all platforms supporting TOTP. Available in two forms:
+2FA-Auth-Lite generates 6-digit verification codes compatible with GitHub, Google, Microsoft, and all platforms supporting TOTP. Available in two forms:
 
 - **Browser Extension** - Quick access from your browser toolbar
 - **Progressive Web App (PWA)** - Installable standalone app for mobile and desktop

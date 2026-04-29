@@ -1,4 +1,4 @@
-# Tiny Auth
+# 2FA-Auth-Lite
 
 [English](./README.en.md)
 
@@ -7,7 +7,7 @@
 
 ### 概述
 
-Tiny Auth 生成 6 位验证码，兼容 GitHub、Google、Microsoft 等所有支持 TOTP 的平台。提供两种使用方式：
+2FA-Auth-Lite 生成 6 位验证码，兼容 GitHub、Google、Microsoft 等所有支持 TOTP 的平台。提供两种使用方式：
 
 - **浏览器扩展** - 从浏览器工具栏快速访问
 - **渐进式 Web 应用（PWA）** - 可安装到手机或桌面的独立应用

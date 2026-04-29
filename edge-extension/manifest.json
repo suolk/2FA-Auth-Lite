@@ -1,13 +1,13 @@
 {
     "manifest_version": 3,
-    "name": "Tiny Auth",
+    "name": "2FA-Auth-Lite",
     "version": "1.0.0",
     "description": "Generate TOTP codes for two-factor authentication.",
     "icons": {
         "64": "icons/icon64x64.png"
     },
     "action": {
-        "default_title": "Tiny Auth",
+        "default_title": "2FA-Auth-Lite",
         "default_popup": "popup.html"
     },
     "permissions": [

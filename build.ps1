@@ -1,5 +1,5 @@
 $src = "edge-extension"
-$out = "Tiny Auth.zip"
+$out = "2FA-Auth-Lite.zip"
 $tmp = "temp_build"
 $files = @(
     "manifest.json",
@@ -19,7 +19,7 @@ $files = @(
 )
 
 Write-Host "===================================="
-Write-Host "   Tiny Auth Extension Builder"
+Write-Host "   2FA-Auth-Lite Extension Builder"
 Write-Host "===================================="
 Write-Host ""
 
