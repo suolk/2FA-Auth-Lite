@@ -52,7 +52,24 @@ foreach ($f in $files) {
 
 Write-Host ""
 Write-Host "[*] Compressing..."
-Compress-Archive -Path "$tmp\*" -DestinationPath $out -Force
+
+# Use .NET ZipFile to ensure forward slashes in archive
+Add-Type -AssemblyName System.IO.Compression
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+
+if (Test-Path $out) { Remove-Item $out -Force }
+
+$zipArchive = [System.IO.Compression.ZipFile]::Open((Join-Path $PWD $out), 'Create')
+try {
+    Get-ChildItem -Path $tmp -Recurse -File | ForEach-Object {
+        $relativePath = $_.FullName.Substring((Join-Path $PWD $tmp).Length + 1).Replace('\', '/')
+        [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zipArchive, $_.FullName, $relativePath) | Out-Null
+        Write-Host "  → $relativePath"
+    }
+} finally {
+    $zipArchive.Dispose()
+}
+
 Remove-Item -Recurse -Force $tmp
 
 $size = [math]::Round((Get-Item $out).Length / 1KB, 2)
