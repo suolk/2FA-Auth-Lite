@@ -39,11 +39,32 @@ export function applyLang() {
 
     document.getElementById("helpTitle").textContent = t("helpTitle");
     document.getElementById("helpIntro").textContent = t("helpIntro");
-    document.getElementById("helpList").innerHTML = `
-        <li><strong>${t("helpStep1Title")}</strong><br>${t("helpStep1Body")}</li>
-        <li><strong>${t("helpStep2Title")}</strong><br>${t("helpStep2Body")}</li>
-        <li><strong>${t("helpStep3Title")}</strong><br>${t("helpStep3Body")}</li>
-    `;
+
+    const helpList = document.getElementById("helpList");
+    helpList.replaceChildren();
+
+    const step1 = document.createElement("li");
+    const step1Title = document.createElement("strong");
+    step1Title.textContent = t("helpStep1Title");
+    step1.appendChild(step1Title);
+    step1.appendChild(document.createElement("br"));
+    step1.appendChild(document.createTextNode(t("helpStep1Body")));
+
+    const step2 = document.createElement("li");
+    const step2Title = document.createElement("strong");
+    step2Title.textContent = t("helpStep2Title");
+    step2.appendChild(step2Title);
+    step2.appendChild(document.createElement("br"));
+    step2.appendChild(document.createTextNode(t("helpStep2Body")));
+
+    const step3 = document.createElement("li");
+    const step3Title = document.createElement("strong");
+    step3Title.textContent = t("helpStep3Title");
+    step3.appendChild(step3Title);
+    step3.appendChild(document.createElement("br"));
+    step3.appendChild(document.createTextNode(t("helpStep3Body")));
+
+    helpList.append(step1, step2, step3);
 
     langSwitch.querySelectorAll(".lang-btn").forEach((btn) => {
         btn.classList.toggle("lang-btn--active", btn.dataset.lang === currentLang);
@@ -128,7 +149,11 @@ export function closeDeleteConfirm() {
 
 export function renderAccounts() {
     if (!accounts.length) {
-        accountListEl.innerHTML = `<div class="empty-tip">Click + to add your first account.</div>`;
+        accountListEl.replaceChildren();
+        const emptyTip = document.createElement("div");
+        emptyTip.className = "empty-tip";
+        emptyTip.textContent = "Click + to add your first account.";
+        accountListEl.appendChild(emptyTip);
         return;
     }
     const fragment = document.createDocumentFragment();
@@ -177,8 +202,37 @@ export function renderAccounts() {
         deleteButton.className = "secondary danger settings-btn";
         deleteButton.dataset.action = "delete";
         deleteButton.dataset.id = account.id;
-        deleteButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>`;
         deleteButton.setAttribute("aria-label", "Delete account");
+
+        // Create SVG element safely
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        svg.setAttribute("width", "15");
+        svg.setAttribute("height", "15");
+        svg.setAttribute("viewBox", "0 0 24 24");
+        svg.setAttribute("fill", "none");
+        svg.setAttribute("stroke", "currentColor");
+        svg.setAttribute("stroke-width", "2");
+        svg.setAttribute("stroke-linecap", "round");
+        svg.setAttribute("stroke-linejoin", "round");
+
+        const polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+        polyline.setAttribute("points", "3 6 5 6 21 6");
+
+        const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path1.setAttribute("d", "M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6");
+
+        const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path2.setAttribute("d", "M10 11v6");
+
+        const path3 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path3.setAttribute("d", "M14 11v6");
+
+        const path4 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path4.setAttribute("d", "M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2");
+
+        svg.append(polyline, path1, path2, path3, path4);
+        deleteButton.appendChild(svg);
 
         const progress = document.createElement("div");
         progress.className = "account-progress";
