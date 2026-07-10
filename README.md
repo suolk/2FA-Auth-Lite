@@ -3,7 +3,7 @@
 [English](./README.en.md)
 
 ---
-轻量级 TOTP（基于时间的一次性密码）身份验证器，用于双因素认证（2FA）。
+轻量级 TOTP（基于时间的一次性密码）身份验证器，用于双因素认证（2FA）。支持扫码添加和批量导入导出json文件
 
 ### 概述
 
@@ -14,5 +14,6 @@
 
 ## 浏览器扩展
 - **[从 GitHub Releases 下载](https://github.com/suolk/Tiny-Auth/releases/tag/v1.0.0)**
-- **Edge 扩展商店** - 审核中，即将上架
+- **[Microsoft Edge 扩展商店](https://microsoftedge.microsoft.com/addons/detail/mlgkegmodaokoabknaehdahemdiebejg)**
+- **[Firefox 扩展商店](https://addons.mozilla.org/zh-CN/firefox/addon/2fa-auth-lite/)**
 - [安装指南](./edge-extension/README.zh.md)

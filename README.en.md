@@ -15,5 +15,6 @@ A lightweight TOTP (Time-based One-Time Password) authenticator for two-factor a
 
 ## Browser Extension
 - **[Download from GitHub Releases](https://github.com/suolk/Tiny-Auth/releases/tag/v1.0.0)**
-- **Edge Add-ons Store** - Under review, coming soon
+- **[Microsoft Edge Add-ons Store](https://microsoftedge.microsoft.com/addons/detail/mlgkegmodaokoabknaehdahemdiebejg)**
+- **[Firefox Add-ons Store](https://addons.mozilla.org/zh-CN/firefox/addon/2fa-auth-lite/)**
 - [Installation Guide](./edge-extension/README.md)
