@@ -4,6 +4,7 @@ package.json
 *.pem
 *.crx
 .vscode
+.editorconfig
 
 # Local IDE/system files
 .idea/
