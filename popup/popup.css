@@ -38,6 +38,7 @@ body {
 h1 {
     margin: 0;
     font-size: 20px;
+    white-space: nowrap;
 }
 
 .subtitle {
@@ -70,6 +71,7 @@ input:focus {
 
 .topbar {
     justify-content: space-between;
+    gap: 12px;
     margin-bottom: 14px;
 }
 

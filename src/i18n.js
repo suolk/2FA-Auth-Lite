@@ -134,8 +134,8 @@ export const T = {
         btnImport: "Import",
         exportWarning: "Warning: the export contains plaintext secrets. Keep it safe and do not share.",
         toastExportDone: "Exported",
-        toastImportDone: (n) => `Imported ${n} accounts`,
-        toastImportSkipped: (n) => `Skipped ${n} duplicate secrets`,
+        toastImportDone: (n) => `Imported ${n} account${n === 1 ? "" : "s"}`,
+        toastImportSkipped: (n) => `Skipped ${n} duplicate secret${n === 1 ? "" : "s"}`,
         toastImportFailed: "Import failed. Invalid file format.",
     },
 };
