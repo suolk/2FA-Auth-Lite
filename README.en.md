@@ -121,30 +121,18 @@ src/state.js          Shared state and DOM references
 src/ui.js             Rendering of the list, editor, toasts and language switch
 src/qr.js             QR decoding: uploaded images and current-tab capture
 src/sites.js          Mapping of common service names to URLs
-src/vendor/zxing.js   Third-party @zxing/library (UMD build) for QR decoding
+src/vendor/zxing.js   Third-party @zxing/library (UMD build, https://github.com/zxing-js/library) for QR decoding
 icons/                16 / 32 / 48 / 128 icons
 scripts/pack.mjs      Dependency-free packaging script for the Edge and Firefox zips
 ```
 
 ### Packaging
 
-Requires Node.js 18+:
-
 ```bash
 node scripts/pack.mjs
 ```
 
-This produces `dist/2fa-auth-lite-edge-<version>.zip` (without `browser_specific_settings`) and `dist/2fa-auth-lite-firefox-<version>.zip` (manifest unchanged).
-
-> Don't package with `Compress-Archive` from Windows PowerShell 5.1: its zips use backslashes in entry paths, which addons.mozilla.org rejects.
-
-Remember to bump `version` in `manifest.json` before each release.
-
-### Release notes
-
-- The Firefox add-on ID is `tiny-auth@suolk.com` (`manifest.json` → `browser_specific_settings.gecko.id`). It belongs to the publisher's AMO account; **do not change it**, or existing users will stop receiving updates
-- `src/vendor/zxing.js` is the minified third-party library [@zxing/library](https://github.com/zxing-js/library); mention this if AMO reviewers ask about its source
-- Store assets (icons, promo tiles, listing text) live in `dist/store/` and are not tracked by git
+Builds the Edge and Firefox zips in `dist/` (requires Node.js 18+).
 
 ### Compatibility
 

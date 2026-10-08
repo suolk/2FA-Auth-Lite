@@ -121,30 +121,18 @@ src/state.js          共享状态与 DOM 引用
 src/ui.js             渲染列表、编辑页、提示与语言切换
 src/qr.js             二维码识别：上传图片、截取当前标签页
 src/sites.js          常见服务名称到网址的映射
-src/vendor/zxing.js   第三方库 @zxing/library（UMD 构建），用于二维码解码
+src/vendor/zxing.js   第三方库 @zxing/library（UMD 构建，https://github.com/zxing-js/library），用于二维码解码
 icons/                16 / 32 / 48 / 128 图标
 scripts/pack.mjs      打包脚本（无依赖），生成 Edge 与 Firefox 的 zip
 ```
 
 ### 打包
 
-需要 Node.js 18+：
-
 ```bash
 node scripts/pack.mjs
 ```
 
-生成 `dist/2fa-auth-lite-edge-<version>.zip`（去掉了 `browser_specific_settings`）和 `dist/2fa-auth-lite-firefox-<version>.zip`（原样清单）。
-
-> 不要用 Windows PowerShell 5.1 的 `Compress-Archive` 打包：它生成的 zip 内部路径使用反斜杠，addons.mozilla.org 会拒绝。
-
-发布新版本前记得修改 `manifest.json` 中的 `version`。
-
-### 发布注意事项
-
-- Firefox 扩展 ID 为 `tiny-auth@suolk.com`（`manifest.json` → `browser_specific_settings.gecko.id`），已归属发布者的 AMO 账号，**不要修改**，否则已安装的用户收不到更新
-- `src/vendor/zxing.js` 是压缩过的第三方库 [@zxing/library](https://github.com/zxing-js/library)，提交 AMO 时如被问到来源，注明这一点即可
-- 商店素材（图标、宣传磁贴、商店描述）放在 `dist/store/`，不纳入版本控制
+在 `dist/` 下生成 Edge 和 Firefox 两个 zip 包（需要 Node.js 18+）。
 
 ### 兼容性
 
