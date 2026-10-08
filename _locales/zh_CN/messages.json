@@ -3,7 +3,7 @@
     "message": "2FA-Auth-Lite"
   },
   "extShortName": {
-    "message": "2FA-Auth-Lite"
+    "message": "2FA-Auth"
   },
   "extDescription": {
     "message": "轻量级 TOTP 验证器：为双因素认证生成 6 位验证码，支持扫码添加和 JSON 导入导出，数据只保存在本地。"
