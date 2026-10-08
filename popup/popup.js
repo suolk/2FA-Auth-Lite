@@ -1,6 +1,6 @@
-import { normalizeBase32, decodeBase32, generateTotp } from "./totp.js";
-import { createAccount, persistAccounts, loadAccounts } from "./storage.js";
-import { DEFAULT_LANG } from "./i18n.js";
+import { normalizeBase32, decodeBase32, generateTotp } from "../src/totp.js";
+import { createAccount, persistAccounts, loadAccounts } from "../src/storage.js";
+import { DEFAULT_LANG } from "../src/i18n.js";
 import {
     accounts, editingAccountId, pendingDeleteAccountId, isShowingSecret, isNewAccount, currentLang,
     setAccounts, setCurrentLang, setIsShowingSecret, setIsNewAccount,
@@ -10,13 +10,13 @@ import {
     accountListEl, editNameInput, editSiteNameInput, editSiteUrlInput,
     confirmBar, confirmYesBtn, confirmNoBtn,
     viewHelp, viewEditor,
-} from "./state.js";
+} from "../src/state.js";
 import {
     t, applyLang, showView,
     setEditorStatus, markCopied, openDeleteConfirm, closeDeleteConfirm,
     renderAccounts, setProgress, showEditor, hideEditor, setListStatus,
-} from "./ui.js";
-import { scanQrFromFile, captureAndScanQr } from "./qr.js";
+} from "../src/ui.js";
+import { scanQrFromFile, captureAndScanQr } from "../src/qr.js";
 
 const PERIOD_SECONDS = 30;
 const STORAGE_LANG_KEY = "lang";

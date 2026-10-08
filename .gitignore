@@ -1,13 +1,14 @@
+dist/
 node_modules/
-package-lock.json
-package.json
+web-ext-artifacts/
 *.pem
 *.crx
-.vscode
-.editorconfig
+*.zip
 
 # Local IDE/system files
+.vscode/
 .idea/
+.editorconfig
 .DS_Store
 Thumbs.db
 
@@ -15,8 +16,3 @@ Thumbs.db
 .env
 .env.*
 *.log
-
-# Extension packaging artifacts
-package/
-dist/
-*.zip

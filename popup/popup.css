@@ -343,6 +343,16 @@ button.danger:hover {
     font-size: 12px;
 }
 
+.confirm-actions button.danger {
+    background: var(--danger);
+    color: var(--white);
+}
+
+.confirm-actions button.danger:hover {
+    background: var(--danger-bg);
+    color: var(--danger);
+}
+
 /* ── Toast ── */
 
 .toast {

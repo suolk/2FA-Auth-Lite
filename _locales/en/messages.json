@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "2FA-Auth-Lite"
+  },
+  "extShortName": {
+    "message": "2FA-Auth-Lite"
+  },
+  "extDescription": {
+    "message": "Lightweight TOTP authenticator: generate 6-digit 2FA codes, add accounts by QR code, import/export JSON. Data stays local."
+  },
+  "actionTitle": {
+    "message": "2FA-Auth-Lite"
+  }
+}
