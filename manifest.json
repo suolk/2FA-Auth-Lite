@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "__MSG_extName__",
   "short_name": "__MSG_extShortName__",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "default_locale": "zh_CN",
   "homepage_url": "https://github.com/suolk/2FA-Auth-Lite",
   "description": "__MSG_extDescription__",

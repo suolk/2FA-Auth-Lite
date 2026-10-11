@@ -11,7 +11,7 @@ A lightweight TOTP (Time-based One-Time Password) authenticator for two-factor a
 - **One-click copy**: click a code to copy it; a progress bar shows when it refreshes
 - **Import / export**: export all accounts to a JSON file, or batch-import from one (duplicate secrets are skipped)
 - **Chinese / English**: switch the interface language from the top-right corner
-- **Private**: no server and no network requests; your data stays in your own browser
+- **Private**: the extension itself connects to no server and makes no network requests; your data stays in your own browser
 
 ## Installation
 
@@ -103,6 +103,12 @@ A bare array of accounts `[{ "username", "secret", "siteName", "siteUrl" }]` is 
 - Check that your system clock is accurate
 - Make sure the secret was entered correctly
 - Services using non-standard TOTP parameters (other than SHA-1 / 6 digits / 30 seconds) are not supported
+
+## Feedback
+
+- **Feedback form**: [feedback.netcache24.site](https://feedback.netcache24.site/?app=2fa-auth-lite). It is sent privately to the developer, and no GitHub access is needed. "Feedback" at the bottom of the panel opens it with the extension version and browser filled in
+- **GitHub Issues**: you can also post publicly on [GitHub](https://github.com/suolk/2FA-Auth-Lite/issues/new)
+- "Feedback" only opens a web page; the extension itself never sends any data
 
 ---
 

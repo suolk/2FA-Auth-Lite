@@ -6,6 +6,8 @@ export const T = {
         appTitle: "验证器 Lite",
         subtitle: "点击代码复制",
         hint: "请不要在他人的设备上使用密钥。",
+        feedbackLink: "反馈问题",
+        feedbackTitle: "提交问题或建议。内容私下发送给开发者，不需要能访问 GitHub。",
         copied: "已复制",
 
         // Editor view
@@ -75,6 +77,8 @@ export const T = {
         appTitle: "2FA-Auth-Lite",
         subtitle: "Click code to copy",
         hint: "Use your setup key only on your own device.",
+        feedbackLink: "Feedback",
+        feedbackTitle: "Report a bug or suggest a feature. It is sent privately to the developer; no GitHub access needed.",
         copied: "Copied",
 
         // Editor view

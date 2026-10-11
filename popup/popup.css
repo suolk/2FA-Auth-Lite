@@ -396,7 +396,8 @@ button.danger:hover {
     gap: 6px;
 }
 
-.github-author {
+.github-author,
+.github-sep {
     color: var(--muted);
 }
 

@@ -69,11 +69,42 @@ export function applyLang() {
 
     helpList.append(step1, step2, step3);
 
+    const feedbackLink = document.getElementById("feedbackLink");
+    feedbackLink.textContent = t("feedbackLink");
+    feedbackLink.title = t("feedbackTitle");
+    feedbackLink.href = feedbackUrl();
+
     langSwitch.querySelectorAll(".lang-btn").forEach((btn) => {
         btn.classList.toggle("lang-btn--active", btn.dataset.lang === currentLang);
     });
 
     renderAccounts();
+}
+
+// ── Feedback ──
+
+const FEEDBACK_URL = "https://feedback.netcache24.site/";
+
+// 只取浏览器名和主版本号，填进反馈页方便排查
+function browserLabel() {
+    const ua = navigator.userAgent;
+    const rules = [[/Edg\/(\d+)/, "Edge"], [/Firefox\/(\d+)/, "Firefox"], [/Chrome\/(\d+)/, "Chrome"]];
+    for (const [re, name] of rules) {
+        const m = ua.match(re);
+        if (m) return `${name} ${m[1]}`;
+    }
+    return "";
+}
+
+// 扩展本身不发送任何东西：这里只是生成链接，用户在反馈页上自己决定是否提交
+function feedbackUrl() {
+    const query = new URLSearchParams({
+        app: "2fa-auth-lite",
+        version: chrome.runtime.getManifest().version,
+        browser: browserLabel(),
+        lang: currentLang === "en" ? "en" : "zh",
+    });
+    return `${FEEDBACK_URL}?${query}`;
 }
 
 // ── View switching ──
