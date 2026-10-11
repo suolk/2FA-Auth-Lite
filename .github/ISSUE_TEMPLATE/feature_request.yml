@@ -1,0 +1,35 @@
+name: 功能建议 / Feature request
+description: 希望增加或改进的功能 / Suggest a new feature or an improvement
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        欢迎提建议！说清楚想解决什么问题，比直接给出方案更有帮助。
+        Suggestions welcome! Describing the problem you want solved helps more than a specific solution.
+
+        > ⚠️ 请不要贴出密钥、二维码或导出文件。/ Please don't post secrets, QR codes or exported files.
+  - type: textarea
+    id: problem
+    attributes:
+      label: 想解决什么问题 / What problem would this solve
+      placeholder: 例如：我希望能按网站给账户分组 / e.g. I'd like to group accounts by site
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: 你的想法 / Your idea
+      description: 希望它怎么工作？ / How should it work?
+  - type: input
+    id: version
+    attributes:
+      label: 扩展版本 / Extension version
+      placeholder: "1.0.4"
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 确认 / Checks
+      options:
+        - label: 我已搜索过现有 issue，没有重复 / I searched existing issues and this is not a duplicate
+          required: true

@@ -107,7 +107,7 @@
 ## 反馈
 
 - **反馈页**：[feedback.netcache24.site](https://feedback.netcache24.site/?app=2fa-auth-lite)，内容私下发送给开发者，不需要能访问 GitHub。扩展面板底部的「反馈问题」会直接打开它，并自动带上扩展版本和浏览器
-- **GitHub Issues**：也可以在 [GitHub](https://github.com/suolk/2FA-Auth-Lite/issues/new) 公开提交
+- **GitHub Issues**：也可以在 [GitHub](https://github.com/suolk/2FA-Auth-Lite/issues/new/choose) 公开提交
 - 「反馈问题」只是打开网页，扩展本身不会发送任何数据
 
 ---

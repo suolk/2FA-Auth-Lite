@@ -107,7 +107,7 @@ A bare array of accounts `[{ "username", "secret", "siteName", "siteUrl" }]` is 
 ## Feedback
 
 - **Feedback form**: [feedback.netcache24.site](https://feedback.netcache24.site/?app=2fa-auth-lite). It is sent privately to the developer, and no GitHub access is needed. "Feedback" at the bottom of the panel opens it with the extension version and browser filled in
-- **GitHub Issues**: you can also post publicly on [GitHub](https://github.com/suolk/2FA-Auth-Lite/issues/new)
+- **GitHub Issues**: you can also post publicly on [GitHub](https://github.com/suolk/2FA-Auth-Lite/issues/new/choose)
 - "Feedback" only opens a web page; the extension itself never sends any data
 
 ---

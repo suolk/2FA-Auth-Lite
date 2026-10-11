@@ -1,0 +1,61 @@
+name: 问题反馈 / Bug report
+description: 验证码不对、扫码失败、导入导出出错等 / Wrong codes, QR scan failures, import/export errors, etc.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈！请尽量写清楚做了什么、看到了什么。
+        Thanks for reporting! Please describe what you did and what you saw.
+
+        > ⚠️ **不要粘贴密钥、二维码截图或导出的 JSON 文件**，它们能直接生成你的验证码。截图前请先打码。
+        > ⚠️ **Never paste secret keys, QR code screenshots or exported JSON files** — they can generate your codes. Blur screenshots first.
+  - type: input
+    id: version
+    attributes:
+      label: 扩展版本 / Extension version
+      description: 从扩展面板底部的「反馈问题」进入时会自动填写 / Filled in automatically when opened from the panel
+      placeholder: "1.0.4"
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: 浏览器及版本 / Browser and version
+      placeholder: "Edge 141 / Firefox 143"
+    validations:
+      required: true
+  - type: input
+    id: service
+    attributes:
+      label: 相关网站或服务（选填）/ Related site or service (optional)
+      description: 例如 GitHub、Google；只写名称，不要写账号 / e.g. GitHub, Google. Name only, no account details
+  - type: textarea
+    id: what
+    attributes:
+      label: 问题描述 / What happened
+      description: 实际看到了什么？可以附打过码的截图 / What did you see? Blurred screenshots help.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤 / Steps to reproduce
+      placeholder: |
+        1. 点击 … / Click …
+        2. 选择 … / Choose …
+        3. 看到 … / See …
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望结果 / Expected behavior
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 确认 / Checks
+      options:
+        - label: 我没有在这里贴出任何密钥、二维码或导出文件 / I have not posted any secret, QR code or exported file here
+          required: true
+        - label: 我已搜索过现有 issue，没有重复 / I searched existing issues and this is not a duplicate
+          required: true
+        - label: 验证码不对时，我已确认系统时间准确 / For wrong codes, I checked that my system clock is accurate

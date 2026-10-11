@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 私下反馈 / Private feedback
+    url: https://feedback.netcache24.site/?app=2fa-auth-lite
+    about: 不想公开提交？内容只发送给开发者 / Prefer not to post publicly? This goes to the developer only
+  - name: 在 Edge 加载项商店评分 / Rate on Microsoft Edge Add-ons
+    url: https://microsoftedge.microsoft.com/addons/detail/mlgkegmodaokoabknaehdahemdiebejg
+    about: 喜欢的话欢迎留下评分和评论 / If you like it, a rating or review helps a lot
+  - name: 在 Firefox 附加组件商店评分 / Rate on Firefox Add-ons
+    url: https://addons.mozilla.org/addon/2fa-auth-lite/
+    about: 喜欢的话欢迎留下评分和评论 / If you like it, a rating or review helps a lot
